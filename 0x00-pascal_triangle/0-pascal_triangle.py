@@ -10,13 +10,14 @@ algorithm:
         the triangle adjancent row.
 """
 
-def pascal_triangle(n:int):
+
+def pascal_triangle(n: int):
     """
     returns a list of lists of integers following the pascal's triangle
 
     Args:
         n [int]: height of triangle
-    
+
     Returns:
         triangle [list]: a list of lists of integers
                         following the pascal's triangle
