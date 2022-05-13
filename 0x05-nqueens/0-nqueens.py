@@ -16,7 +16,7 @@ Where N must be an integer greater or equal to 4
 The program should print every possible solution to the problem
     - One solution per line
     - Format: see example
-    - You don’t have to print the solutions in a specific order
+    - You dont have to print the solutions in a specific order
 
 """
 
@@ -55,7 +55,11 @@ def initializeBoard():
     board = [[0] * N for i in range(N)]
     return board
 
+
 def isSafe(board, row, col):
+    """
+    checks board
+    """
 
     # Check this row on left side
     for i in range(col):
@@ -82,6 +86,7 @@ def isSafe(board, row, col):
 
     return True
 
+
 def nqueens(n: int, board: list, result: list, col: int) -> bool:
     """
     nqueens puzzle solution
@@ -89,7 +94,7 @@ def nqueens(n: int, board: list, result: list, col: int) -> bool:
     if (col == n):
         for row in range(n):
             for col in range(n):
-                print(board[row][col], end = " ")
+                print(board[row][col], end=" ")
                 if board[row][col] == 1:
                     result.insert(col, [row, col])
             print()
@@ -109,7 +114,7 @@ def nqueens(n: int, board: list, result: list, col: int) -> bool:
             board[i][col] = 0
 
     return res
-    
+
 
 if __name__ == '__main__':
     import sys
