@@ -56,6 +56,36 @@ def initializeBoard():
     return board
 
 
+# def isSafe(board, row, col):
+#     """
+#     checks board
+#     """
+
+#     # Check this row on left side
+#     for i in range(col):
+#         if (board[row][i]):
+#             return False
+
+#     # Check upper diagonal on left side
+#     i = row
+#     j = col
+#     while i >= 0 and j >= 0:
+#         if(board[i][j]):
+#             return False
+#         i -= 1
+#         j -= 1
+
+#     # Check lower diagonal on left side
+#     i = row
+#     j = col
+#     while j >= 0 and i < 4:
+#         if(board[i][j]):
+#             return False
+#         i = i + 1
+#         j = j - 1
+
+#     return True
+
 def isSafe(board, row, col):
     """
     checks board
@@ -63,26 +93,20 @@ def isSafe(board, row, col):
 
     # Check this row on left side
     for i in range(col):
-        if (board[row][i]):
+        if board[row][i] == 1:
             return False
 
     # Check upper diagonal on left side
-    i = row
-    j = col
-    while i >= 0 and j >= 0:
-        if(board[i][j]):
+    for i, j in zip(range(row, -1, -1),
+                    range(col, -1, -1)):
+        if board[i][j] == 1:
             return False
-        i -= 1
-        j -= 1
 
     # Check lower diagonal on left side
-    i = row
-    j = col
-    while j >= 0 and i < 4:
-        if(board[i][j]):
+    for i, j in zip(range(row, N, 1),
+                    range(col, -1, -1)):
+        if board[i][j] == 1:
             return False
-        i = i + 1
-        j = j - 1
 
     return True
 
@@ -94,13 +118,10 @@ def nqueens(n: int, board: list, result: list, col: int) -> bool:
     if (col == n):
         for row in range(n):
             for col in range(n):
-                print(board[row][col], end=" ")
                 if board[row][col] == 1:
                     result.insert(col, [row, col])
-            print()
         result.sort()
         print(result)
-        print()
         result.clear()
         return True
 
