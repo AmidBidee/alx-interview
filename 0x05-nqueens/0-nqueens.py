@@ -31,7 +31,12 @@ def validateAndReturnArg(args: list) -> int:
     Return:
         n (int)
     """
-    if len(args) > 2:
+    arg_lenght = len(args)
+    if arg_lenght <= 1:
+        print('Usage: nqueens N')
+        exit(1)
+
+    if arg_lenght > 2:
         print('Usage: nqueens N')
         exit(1)
 
@@ -55,36 +60,6 @@ def initializeBoard():
     board = [[0] * N for i in range(N)]
     return board
 
-
-# def isSafe(board, row, col):
-#     """
-#     checks board
-#     """
-
-#     # Check this row on left side
-#     for i in range(col):
-#         if (board[row][i]):
-#             return False
-
-#     # Check upper diagonal on left side
-#     i = row
-#     j = col
-#     while i >= 0 and j >= 0:
-#         if(board[i][j]):
-#             return False
-#         i -= 1
-#         j -= 1
-
-#     # Check lower diagonal on left side
-#     i = row
-#     j = col
-#     while j >= 0 and i < 4:
-#         if(board[i][j]):
-#             return False
-#         i = i + 1
-#         j = j - 1
-
-#     return True
 
 def isSafe(board, row, col):
     """
@@ -118,8 +93,10 @@ def nqueens(n: int, board: list, result: list, col: int) -> bool:
     if (col == n):
         for row in range(n):
             for col in range(n):
+                print(board[row][col], end=" ")
                 if board[row][col] == 1:
                     result.insert(col, [row, col])
+            print()
         result.sort()
         print(result)
         result.clear()
@@ -144,5 +121,4 @@ if __name__ == '__main__':
     N = validateAndReturnArg(args)
     board = initializeBoard()
     result = []
-
     nqueens(N, board, result, 0)
